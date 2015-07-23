@@ -1,0 +1,331 @@
+var reportCustomerContent = "<table align= 'top'  width='500'style='border-color:#FFFFFF;border-collapse : collapse;margin-left:35px' border='2'><caption><font face='arial' size='5' color='green'><b>Counterparty Contact"
+		+ "</b></font></caption><br><br><tr bgcolor='#B8D3B9' height='40'><td style='border-color:#FFFFFF;'><font face='arial' size='3'><b>Counterparty Name</b></td><td style='border-color:#FFFFFF;><font face='arial' size='7'>Tom Link"
+		+ "</font></td></tr><tr bgcolor='#B8D3B9' height='40'><td style='border-color:#FFFFFF;'><font face='arial' size='3'><b>Counterparty Contact Email</b></td><td style='border-color:#FFFFFF;><font face='arial' size='3'>tom.link@gmail.com"
+		+ "</font></td></tr><tr bgcolor='#B8D3B9' height='40'><td style='border-color:#FFFFFF;'><font face='arial' size='3'><b>Counterparty Phone</b></td><td style='border-color:#FFFFFF;><font face='arial' size='3'>9998567234"
+		+ "</font></td></tr></table>";
+
+Ext.Loader.setConfig({
+			enabled : true,
+			paths : {
+				'Ext.ux.touch.grid' : './Ext.ux.touch.grid'
+			}
+		});
+
+Ext.require(['Ext.ux.touch.grid.View', 'Ext.ux.touch.grid.feature.Feature',
+		'Ext.ux.touch.grid.feature.TwistersModel']);
+
+Ext.setup({
+	onReady : function() {
+		Ext.define('TestModel', {
+					extend : 'Ext.data.Model',
+
+					config : {
+						fields : ['company', 'price', 'change', 'pct',
+								'updated', 'viewed']
+					}
+				});
+
+		var store = Ext.create('Ext.data.Store', {
+					model : 'TestModel',
+					data : [{
+								company : '3m Co',
+								price : 71.72,
+								change : 0.02,
+								pct : 0.03,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Alcoa Inc',
+								price : 29.01,
+								change : 0.42,
+								pct : 1.47,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Altria Group Inc',
+								price : 83.81,
+								change : 0.28,
+								pct : 0.34,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'American Express Company',
+								price : 52.55,
+								change : 0.01,
+								pct : 0.02,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'American International Group, Inc.',
+								price : 64.13,
+								change : 0.31,
+								pct : 0.49,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'AT&#38;T Inc.',
+								price : 31.61,
+								change : -0.48,
+								pct : -1.54,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Boeing Co.',
+								price : 75.43,
+								change : 0.53,
+								pct : 0.71,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Caterpillar Inc.',
+								price : 67.27,
+								change : 0.92,
+								pct : 1.39,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Citigroup, Inc.',
+								price : 49.37,
+								change : 0.02,
+								pct : 0.04,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'E.I. du Pont de Nemours and Company',
+								price : 40.48,
+								change : 0.51,
+								pct : 1.28,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Exxon Mobil Corp',
+								price : 68.1,
+								change : -0.43,
+								pct : -0.64,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'General Electric Company',
+								price : 34.14,
+								change : -0.08,
+								pct : -0.23,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'General Motors Corporation',
+								price : 30.27,
+								change : 1.09,
+								pct : 3.74,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Hewlett-Packard Co.',
+								price : 36.53,
+								change : -0.03,
+								pct : -0.08,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Honeywell Intl Inc',
+								price : 38.77,
+								change : 0.05,
+								pct : 0.13,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Intel Corporation',
+								price : 19.88,
+								change : 0.31,
+								pct : 1.58,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'International Business Machines',
+								price : 81.41,
+								change : 0.44,
+								pct : 0.54,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Johnson &#38; Johnson',
+								price : 64.72,
+								change : 0.06,
+								pct : 0.09,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'JP Morgan &#38; Chase &#38; Co',
+								price : 45.73,
+								change : 0.07,
+								pct : 0.15,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'McDonald\'s Corporation',
+								price : 36.76,
+								change : 0.86,
+								pct : 2.40,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Merck &#38; Co., Inc.',
+								price : 40.96,
+								change : 0.41,
+								pct : 1.01,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Microsoft Corporation',
+								price : 25.84,
+								change : 0.14,
+								pct : 0.54,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Pfizer Inc',
+								price : 27.96,
+								change : 0.4,
+								pct : 1.45,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'The Coca-Cola Company',
+								price : 45.07,
+								change : 0.26,
+								pct : 0.58,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'The Home Depot, Inc.',
+								price : 34.64,
+								change : 0.35,
+								pct : 1.02,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'The Procter &#38; Gamble Company',
+								price : 61.91,
+								change : 0.01,
+								pct : 0.02,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'United Technologies Corporation',
+								price : 63.26,
+								change : 0.55,
+								pct : 0.88,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Verizon Communications',
+								price : 35.57,
+								change : 0.39,
+								pct : 1.11,
+								updated : '9/1/2010',
+								viewed : 0
+							}, {
+								company : 'Wal-Mart Stores, Inc.',
+								price : 45.45,
+								change : 0.73,
+								pct : 1.63,
+								updated : '9/1/2010',
+								viewed : 0
+							}]
+				});
+
+		Ext.create('Ext.ux.touch.grid.View', {
+			fullscreen : true,
+			store : store,
+
+			features : [{
+						ftype : 'Ext.ux.touch.grid.feature.TwistersModel',
+						launchFn : 'constructor'
+					}
+
+			],
+			columns : [{
+						header : 'Company',
+						dataIndex : 'company',
+						style : 'padding-left: 0.25em;',
+						width : '40%',
+						filter : {
+							type : 'string'
+						},
+						editor : {
+							xtype : 'textfield'
+						},
+						renderer : function(value) {
+							return value;
+						}
+					}, {
+						header : 'Price',
+						dataIndex : 'price',
+						style : 'text-align: center;',
+						width : '15%',
+						filter : {
+							type : 'numeric'
+						}
+					}, {
+						header : 'Change',
+						dataIndex : 'change',
+						cls : 'centered-cell redgreen-cell',
+						width : '15%',
+						renderer : function(value) {
+							var cls = (value > 0) ? 'green' : 'red';
+
+							return '<span class="' + cls + '">' + value
+									+ '</span>';
+						}
+					}, {
+						header : '% Change',
+						dataIndex : 'pct',
+						cls : 'centered-cell redgreen-cell',
+						width : '15%',
+						renderer : function(value) {
+							var cls = (value > 0) ? 'green' : 'red';
+
+							return '<span class="' + cls + '">' + value
+									+ '</span>';
+						}
+					}, {
+						header : 'Last Updated',
+						dataIndex : 'updated',
+						hidden : true,
+						style : 'text-align: right; padding-right: 1em;',
+						sortable : false,
+						width : '15%'
+					}],
+			listeners : {
+				itemtap : function(dataview, index, el, rec, e) {
+					// console.log("itemtap" + index);
+
+					// We will get below html from by writing el.getHtml();
+					// OldHtml = el.getHtml();
+					// console.log(OldHtml);
+
+					var changeCls = (rec.get("change") > 0) ? 'green' : 'red';
+					var pctCls = (rec.get("pct") > 0) ? 'green' : 'red';
+					OldHtml = '<div class="x-grid-cell checkbox-cell" dataindex="checkbox_selection" style="width: 30px;"><div class="grid-checkbox"></div></div>'
+							+ '<div class="x-grid-cell" dataindex="company" style="padding-left: 0.25em; width: 40%;">'
+							+ rec.get("company")
+							+ '</div>'
+							+ '<div class="x-grid-cell" dataindex="price" style="text-align: center; width: 15%;">'
+							+ rec.get("price")
+							+ '</div>'
+							+ '<div class="x-grid-cell centered-cell redgreen-cell" dataindex="change" style="width: 15%;"><span class="'
+							+ changeCls
+							+ '">'
+							+ rec.get("change")
+							+ '</span></div>'
+							+ '<div class="x-grid-cell centered-cell redgreen-cell" dataindex="pct" style="width: 15%;"><span class="'
+							+ pctCls + '">' + rec.get("pct") + '</span></div>';
+
+					// var row = store.getAt(index);
+					// alert(store.getAt(index));
+
+				}
+
+			}
+		});
+	}
+});
