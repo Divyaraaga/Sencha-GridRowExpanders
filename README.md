@@ -1,4 +1,4 @@
-# SenchaTwisters
+# Sencha Grid - Row Expanders/Twisters
 
 This is a sencha repository for Tree View like grid uing
 sencha touch 2.
